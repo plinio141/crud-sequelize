@@ -1,4 +1,4 @@
-var models  = require('../../models');
+const { Person }  = require('../../models');
 
 module.exports = function (app, prefix) {
     /**
@@ -6,6 +6,11 @@ module.exports = function (app, prefix) {
      * 
      */
     app.get(prefix + '/', async function (req, res) {
+        Person.findAll().then(persons => {
+            res.send(persons);
+        }).catch(error => {
+            res.send(error);
+        });
     });
 
     /**
@@ -13,7 +18,12 @@ module.exports = function (app, prefix) {
      * 
      */
     app.post(prefix + '/new', async function (req, res) {
-        
+        const person = req.body;
+        Person.create(person).then(person => {
+            res.send(person);
+        }).catch(error => {
+            res.send(error);
+        });
     });
 
     /**
@@ -21,7 +31,12 @@ module.exports = function (app, prefix) {
      * 
      */
     app.post(prefix + '/update', async function (req, res) {
-        
+        const person = req.body;
+        Person.update(person, { where: { id: person.id } }).then(person => {
+            res.send(person);
+        }).catch(error => {
+            res.send(error);
+        });
     });
 
     /**
@@ -29,6 +44,11 @@ module.exports = function (app, prefix) {
      * 
      */
     app.post(prefix + '/delete', async function (req, res) {
-        
+        const person = req.body;
+        Person.destroy({ where: { id: person.id } }).then(person => {
+            res.send({ success: person });
+        }).catch(error => {
+            res.send(error);
+        });
     });
 }

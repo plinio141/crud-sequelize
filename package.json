@@ -4,7 +4,8 @@
   "description": "Crud con sequelize",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "restart": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mysql2": "^2.0.0",
+    "nodemon": "^2.0.0",
     "sequelize": "^5.21.2"
   }
 }
