@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const fs = require("fs");
 
+
 var corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200,
@@ -25,6 +26,8 @@ for (let i = 0; i < fileApi.length; i++) {
       api(app, `/api/${nameService}`);
   }
 }
+
+
 
 app.listen(8000, () => {
     console.log('Server started!')
